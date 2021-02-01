@@ -1,0 +1,18 @@
+{% extends 'base_layout.html' %}
+
+{% block body %}
+<div class="card w-25 ml-auto mr-auto mt-5" style="margin-bottom: 200px">
+  <div class="card-header" style="background-color: #1849a3;"><h3 class="text-center text-white">เกี่ยวกับฉัน</h3></div>
+  <div class="card-body d-flex justify-content-center">
+    <img class="pt-3 pb-3 rounded" src="https://od.lk/s/NjdfMjAyNDc3NTZf/hw1.jpg" style="width:200px; height:300px;">
+  </div>
+  <div class="card-footer">
+    <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#profile">โปรไฟล์ฉัน</button>
+    <div id="profile" class="collapse pt-3">
+      <p>ชื่อ-นามสกุล : เพทาย จำนงค์ธรรม</p>
+      <p>รหัสนิสิต : 62102010178</p>
+      <p>ปี : 2 &nbsp; &nbsp;อายุ : 20</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

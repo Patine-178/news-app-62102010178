@@ -1,0 +1,87 @@
+{% extends 'base_layout.html' %}
+
+{% block body %}
+<div class="container mt-5 rounded-lg pageContentWrapper" style="background-color: white;">
+<h3 class="pt-4 mb-3" style="color:#1B44AB">ค้นหาข่าวที่คุณสนใจ <span class="badge badge-danger"><i class="fa fa-search"></i></span><img class="mt-4" src="https://od.lk/s/NjdfMjAxNzg4Mzlf/line.png" style="float:right; height:20px; width:820px"></h3>
+<form action="/search" class="m-auto">
+  <div class="row">
+    <div class="col-5">
+      <select name="country" class="custom-select">
+        <option disabled selected>เลือกประเทศ</option>
+        <option value="ar">Argentina</option>
+        <option value="au">Australia</option>
+        <option value="at">Austria</option>
+        <option value="be">Belgium</option>
+        <option value="br">Brazil</option>
+        <option value="bg">Bulgaria</option>
+        <option value="ca">Canada</option>
+        <option value="cn">China</option>
+        <option value="co">Colombia</option>
+        <option value="cu">Cuba</option>
+        <option value="cz">Czech Republic</option>
+        <option value="eg">Egypt</option>
+        <option value="fr">France</option>
+        <option value="de">Germany</option>
+        <option value="gr">Greece</option>
+        <option value="hk">Hong Kong</option>
+        <option value="hu">Hungary</option>
+        <option value="in">India</option>
+        <option value="id">Indonesia</option>
+        <option value="ie">Ireland</option>
+        <option value="il">Israel</option>
+        <option value="it">Italy</option>
+        <option value="jp">Japan</option>
+        <option value="lv">Latvia</option>
+        <option value="lt">Lithuania</option>
+        <option value="my">Malaysia</option>
+        <option value="mx">Mexico</option>
+        <option value="ma">Morocco</option>
+        <option value="nl">Netherlands</option>
+        <option value="nz">New Zealand</option>
+        <option value="ng">Nigeria</option>
+        <option value="no">Norway</option>
+        <option value="ph">Philippines</option>
+        <option value="pl">Poland</option>
+        <option value="pt">Portugal</option>
+        <option value="ro">Romania</option>
+        <option value="ru">Russia</option>
+        <option value="sa">Saudi Arabia</option>
+        <option value="rs">Serbia</option>
+        <option value="sg">Singapore</option>
+        <option value="sk">Slovakia</option>
+        <option value="si">Slovenia</option>
+        <option value="za">South Africa</option>
+        <option value="kr">South Korea</option>
+        <option value="se">Sweden</option>
+        <option value="ch">Switzerland</option>
+        <option value="tw">Taiwan</option>
+        <option value="th">Thailand</option>
+        <option value="tr">Turkey</option>
+        <option value="ae">UAE</option>
+        <option value="ua">Ukraine</option>
+        <option value="gb">United Kingdom</option>
+        <option value="us">United States</option>
+        <option value="ve">Venuzuela</option>
+      </select>
+      <input type="text" name="keyword" class="form-control mt-3" placeholder="คำค้นหา">
+    </div>
+    <div class="col">
+      <input type="submit" class="btn btn-primary mt-4" style="float: left" value="ค้นหา">
+    </div>
+  </div>
+</form>
+<h5 class="list-group pb-3 pt-3">ค้นพบ : {{ news[0] }} รายการ</h5>
+{% if news[0] != 0 %}
+<div class="list-group pb-4">
+    {% for i in range(1, news[0]+1) %}
+        <div class="media border border-primary p-3">
+            <div class="media-body">
+                <h4>{{ news[i]['head'] }}</h4>
+                <p>{{ news[i]['content'] }}<a href="{{ news[i]['url'] }}" target="_blank"> read more</a></p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endif %}
+</div>
+{% endblock %}
