@@ -32,6 +32,7 @@ def home():
     weather = get_weather(city)
     return render_template("home.html", news=covid_new, weather=weather)
 
+# สภาพอากาศ
 def get_weather(city):
     query_city = convert_to_unicode(city)
     url = WEATHER_URL.format(query_city)
