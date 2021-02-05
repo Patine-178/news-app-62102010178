@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Homework2-62102010178</title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+    <style>
+        body {
+            background-color:#f0f5f9
+        }
+        .nav-text:link {
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-text:visited {
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-text:hover {
+            color: white;
+            border-bottom-style: solid;
+            border-width: 4px;
+            border-color: white;
+            text-decoration: none;
+        }
+
+        .nav-text:active {
+            color: #3b86ff;
+            border-color: white;
+            text-decoration: none;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $(".delete").click(function() {
+                var id = $(this).data("id");
+                $(".yes").data("id", id);
+                var title = $(".yes").data("id");
+                $("#confirm").modal();
+            });
+            $(".yes").click(function() {
+                var title = $(this).data("id");
+                window.location.href = "/delete/" + title;
+            });
+        });
+    </script>
+</head>
+
+<body>
+    {% include './includes/navbar.html' %}
+    {% block body %} {% endblock %}
+</body>
+
+
+</html>

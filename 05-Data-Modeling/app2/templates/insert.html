@@ -1,0 +1,27 @@
+<html>
+<head>
+    <title>Student</title>
+</head>
+
+<body>
+    <h1>Students</h1>
+
+    {%for message in get_flashed_messages() %}
+    {{ message }}
+    {%endfor %}
+
+    <form action="{{ request.path }}" method="post">
+        <label for="firstname">First-name</label><br>
+        <input type="text" name="firstname" placeholder="First-name" /><br>
+        <label for="lastname">Last-name</label><br>
+        <input type="text" name="lastname" placeholder="Last-name" /><br>
+        <label for="age">Age</label><br>
+        <input type="text" name="age" placeholder="Age" /><br>
+        <label for="phone">Phone</label><br>
+        <input type="text" name="phone" placeholder="Phone number" /><br>
+        <label for="email">Email</label><br>
+        <input type="text" name="email" placeholder="user@example.com" /><br>
+        <input type="submit" value="Submit" />
+    </form>
+</body>
+</html>
