@@ -29,6 +29,8 @@ def insert():
         genre = request.form['genre']
         height = request.form['height']
         publisher = request.form['publisher']
+        if not title or not author or not genre or not height or not publisher:
+            return render_template("insert.html", message="** กรุณาใส่ข้อมูลให้ครบถ้วน **")
         book = Books(title=title, author=author, genre=genre, height=height, publisher=publisher)
         db.session.add(book)
         db.session.commit()
@@ -39,17 +41,11 @@ def update(title):
     book = Books.query.filter_by(title=title).first()
     if request.method == 'POST':
         if book:
-            db.session.delete(book)
-            db.session.commit()
- 
-            title = request.form['title']
-            author = request.form['author']
-            genre = request.form['genre']
-            height = request.form['height']
-            publisher = request.form['publisher']
-            book = Books(title=title, author=author, genre=genre, height=height, publisher=publisher)
- 
-            db.session.add(book)
+            book.title = request.form['title']
+            book.author = request.form['author']
+            book.genre = request.form['genre']
+            book.height = request.form['height']
+            book.publisher = request.form['publisher']
             db.session.commit()
             return redirect('/')
 
