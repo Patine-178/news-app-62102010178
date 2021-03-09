@@ -8,7 +8,7 @@ ITUNE_FEED = "https://rss.itunes.apple.com/api/v1/us/apple-music/new-releases/al
 
 @app.route("/")
 def get_new_release():
-    feed = feedparser.parse(ITUNE_FEED)
+    feed = feedparser.parse(ITUNE_FEED) # แปลงจาก XML เป็น JSON
     first_item = feed['entries'][0]
     return """<html>
        <body>

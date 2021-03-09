@@ -1,0 +1,24 @@
+{% extends "base_layout.html" %}
+{% block title %} {{ticker}} {% endblock %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <h1 class="mb-3"> {{ ticker | upper }} </h1>
+        <hr />
+        <h2> Price: ${{ stock_price | round(2) }} </h2>
+        <hr />
+
+        <a href="{{ url_for('.financials', ticker=ticker)}}" class="btn btn-primary">
+          View Financials
+        </a>
+      </div>
+      <div class="col-sm">
+          {% include 'shared/portfolio.html' %}
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}

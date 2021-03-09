@@ -1,0 +1,22 @@
+<!doctype html>
+<html>
+
+<head>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
+</head>
+
+<body>
+
+    <h1>Scatter-plot</h1>
+    <div id="scattergraph">
+        <script>
+            var graphs = {{ plot | safe}};
+            // scattergraph เอามาจาก id ของ div
+            Plotly.plot('scattergraph', graphs, {}); // วาดลงไปใน HTML
+        </script>
+    </div>
+
+</body>
+
+</html>

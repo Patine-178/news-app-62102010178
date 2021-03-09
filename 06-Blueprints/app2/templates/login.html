@@ -1,0 +1,18 @@
+<html>
+
+<body>
+
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <p>{{ messages[0] }}</p>
+    {% endif %}
+    {% endwith %}
+
+    <form method="POST" action="/login">
+        <input type="email" name="email" placeholder="Your Email" autofocus=""><br>
+        <input type="password" name="password" placeholder="Your Password"><br><br>
+        <button>Login</button>
+    </form>
+</body>
+
+</html>

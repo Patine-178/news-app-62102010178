@@ -16,8 +16,8 @@ IMG_URL = "http://openweathermap.org/img/wn/{0}@2x.png"
 @app.route('/')
 def home():
     # 5 ข่าว Covid-19
-    data = urlopen(COVID_URL).read()
-    parsed = json.loads(data)
+    data = urlopen(COVID_URL).read() # return JSON String
+    parsed = json.loads(data) # แปลงเป็น dict
     covid_new = []
     for i in range(0, 5):
         covid_new.append({"head":parsed['articles'][i]['title'], 

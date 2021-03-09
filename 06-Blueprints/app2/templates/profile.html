@@ -1,0 +1,13 @@
+<html>
+
+<body>
+    {% if current_user.is_authenticated %}
+    <h1 class="title">Welcome, {{ name }}!</h1>
+    <a href="{{ url_for('auth.logout') }}" class="navbar-item">
+        Logout
+    </a>
+
+    {% endif %}
+</body>
+
+</html>
