@@ -12,7 +12,7 @@ def bmi():
 
 @app.route('/bmi2', methods=['POST']) 
 def bmi2():
-    data = request.json # "{"weight":66.0, "height":175.00}"
+    data = request.json # "{"weight":66.0, "height":175.00}" --> {"weight":66.0, "height":175.00}
     weight = data['weight']
     height = data['height']
 

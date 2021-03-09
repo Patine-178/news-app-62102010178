@@ -24,8 +24,8 @@ def home():
 def get_weather(city,API_KEY):
     query = quote(city) # ทำให้ city เป็น path url ได้ เอาไว้กัน user ใส่ค่ามั่วๆ
     url = OPEN_WEATHER_URL.format(city, API_KEY) # เอาไปแทนที่ในแต่ละตำแหน่งของ OPEN_WEATHER_URL
-    data = urlopen(url).read() # return string
-    parsed = json.loads(data)
+    data = urlopen(url).read() # return json string
+    parsed = json.loads(data) # return json object (dict)
     weather = None
     if parsed.get('weather'):
 
