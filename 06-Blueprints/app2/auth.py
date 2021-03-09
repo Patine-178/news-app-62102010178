@@ -17,7 +17,7 @@ def login():
             flash('Please check your login details and try again.')
             return redirect(url_for('auth.login'))
 
-        login_user(user)
+        login_user(user) # ทำการ Login 
         return redirect(url_for('main.profile'))
     else:
        return render_template('login.html')

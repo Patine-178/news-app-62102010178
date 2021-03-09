@@ -1,4 +1,5 @@
 from flask import Flask
+from markupsafe import escape
 
 app = Flask(__name__)
 
@@ -42,6 +43,19 @@ def favorite_number(num):
 def create(first_name=None, last_name=None):
   return 'Hello ' + first_name + ',' + last_name
 
+@app.route('/user/<username>')
+def show_user_profile(username):
+    # show the user profile for that user
+    return 'User %s' % escape(username)
 
-app.env="development"
-app.run(debug=True)
+@app.route('/post/<int:post_id>')
+def show_post(post_id):
+    # show the post with the given id, the id is an integer
+    return 'Post %d' % post_id
+
+@app.route('/path/<path:subpath>')
+def show_subpath(subpath):
+    # show the subpath after /path/
+    return 'Subpath %s' % escape(subpath)
+
+
