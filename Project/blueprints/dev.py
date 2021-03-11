@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template
 from models import Students
 
+
 dev_name = Blueprint('dev_name', __name__)
 
 @dev_name.route('/dev')
