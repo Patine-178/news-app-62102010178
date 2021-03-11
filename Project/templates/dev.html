@@ -1,0 +1,7 @@
+{% extends 'base_layout.html' %}
+
+{% block body %}
+    {% for student in students %}
+        <p>{{student.name}}</p>
+    {% endfor %}
+{% endblock %}
