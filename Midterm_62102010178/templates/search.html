@@ -1,0 +1,14 @@
+{% extends 'base_layout.html' %}
+
+{% block body %}
+<div class="container mt-5 rounded-lg pageContentWrapper" style="background-color: white;">
+    <h3 class="pt-4 mb-3" style="color:#1B44AB">ค้นหาอาหาร</h3>
+    <form action="/search" method="POST">
+        <input type="text" name="food" class="form-control mt-3" placeholder="ชื่ออาหาร">
+        <input type="submit" class="btn btn-primary mt-4" value="ค้นหา">
+    </form>
+    {% if data %}
+    <h5 class="pb-3 pt-3">ผลลัพธ์ : {{ data }} calories</h5>
+    {% endif %}
+</div>
+{% endblock %}

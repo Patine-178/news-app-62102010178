@@ -1,0 +1,34 @@
+{% extends 'base_layout.html' %}
+
+{% block body %}
+
+    <table class="table w-75 ml-auto mr-auto mt-5 table-bordered">
+    <thead class="thead-dark text-center">
+      <tr>
+        <th>Name</th>
+        <th>Energy</th>
+        <th>Protein</th>
+        <th>Fat</th>
+        <th>Carbohydrate</th>
+      </tr>
+    </thead>
+    <tbody style="background-color: white">
+      {% for food in foods %}
+        <tr>
+            <td>{{food.name}}</td>
+            <td>{{food.energy}}</td>
+            <td>{{food.protein}}</td>
+            <td>{{food.fat}}</td>
+            <td>{{food.carbohydrate}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+  </table>
+    <div id="div-id" class="container ml-auto mr-auto pageContentWrapper">
+        <script>
+            var graphs = {{ graphJSON | safe}};
+            Plotly.plot('div-id', graphs, {});
+        </script>
+    </div>
+
+{% endblock body %}
