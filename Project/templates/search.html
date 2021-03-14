@@ -1,0 +1,117 @@
+{% extends 'base_layout.html' %}
+
+{% block body %}
+<div class="bg-image" style="background-image: url('{{ url_for('static', filename="img/wood.jpg") }}');
+         height: {% if total==0 %}{{ "100vh" }} {% else %}{{ height+"vh" }}{% endif %}">
+
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.4)">
+            <br>
+            <br>
+            <br>
+            <div class="row ">
+                <div class="text-center" style="margin-top: 20px;">
+                    <p style="font-size: 75px; color:white" class="main">Search</p>
+                </div>
+                <div class="container mb-5" style="background-color:white; width:1200px">
+                    <form action="" method="POST">
+                        <div class="input-group mt-3" >
+                            <div class="form-outline border-bottom" style="width:90%; ">
+                              <input type="text" id="form1" name="name" class="form-control"/>
+                              <label class="form-label" for="form1" >Search</label>
+                              
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width:10%">
+                              <i class="fas fa-search"></i>
+                            </button>
+                          </div>
+                      <div class="row mt-3 mb-3">
+                      <div class="col-md-6 ">
+                      
+                    
+                        <select name="type" class="custom-select " style="width:100%">
+                          <option selected disabled>ประเภทอาหาร</option>
+                          <option value="main course">จานหลัก</option>
+                          <option value="side dish">ของเคียง</option>
+                          <option value="dessert">ของหวาน</option>
+                          <option value="appetizer">อาหารเรียกน้ำย่อย</option>
+                          <option value="salad">สลัด</option>
+                          <option value="bread">ขนมปัง</option>
+                          <option value="breakfast">อาหารเช้า</option>
+                          <option value="soup">ซุป</option>
+                          <option value="beverage">เครื่อง</option>
+                          <option value="sauce">ซอส</option>
+                          <option value="marinade">หมัก</option>
+                          <option value="fingerfood">ฟิงเกอร์ฟู้ด</option>
+                          <option value="snack">อาหารว่าง</option>
+                          <option value="drink">สุรา</option>
+                        </select>
+                      
+                    </div>
+                    <div class="col-md-6">
+                        
+                      
+                          <select name="country" class="custom-select" style="width:100%">
+                            <option selected disabled>อาหารแต่ละประเทศ</option>
+                            <option value="African">แอฟริกัน</option>
+                            <option value="American">อเมริกัน</option>
+                            <option value="British">อังกฤษ</option>
+                            <option value="Cajun">เคจุน</option>
+                            <option value="Caribbean">แคริบเบียน</option>
+                            <option value="Chinese">จีน</option>
+                            <option value="Eastern European">ยุโรปตะวันออก</option>
+                            <option value="European">ยุโรป</option>
+                            <option value="French">ฝรั่งเศส</option>
+                            <option value="German">เยอรมัน</option>
+                            <option value="Greek">กรีก</option>
+                            <option value="Indian">อินเดีย</option>
+                            <option value="Irish">ไอริช</option>
+                            <option value="Japanese">ญี่ปุ่น</option>
+                            <option value="Jewish">ยิว</option>
+                            <option value="Korean">เกาหลี</option>
+                            <option value="Latin American">ละตินอเมริกา</option>
+                            <option value="Mediterranean">เมดิเตอร์เรเนียน</option>
+                            <option value="Mexican">เม็กซิกัน</option>
+                            <option value="Middle Eastern">ตะวันออกกลาง</option>
+                            <option value="Nordic">นอร์ดิก</option>
+                            <option value="Southern">ทางใต้</option>
+                            <option value="Spanish">สเปน</option>
+                            <option value="Thai">ไทย</option>
+                            <option value="Vietnamese">เวียดนาม</option>
+                          </select>
+                        
+                      </div>
+                    </form>
+                </div>
+                    {% if results != -1 %}
+                      <table class="table mt-3">
+                        
+                        <tbody>
+                            {% for i in range(total) %}
+                          <tr>
+                            <td rowspan="2" id="img"><img src="{{ results[i]['image'] }}" alt="..."></td>
+                            <td colspan="2" class="text-center" id="name" style="font-size:25px"><strong><a href="/search/{{ results[i]['id'] }}">{{ results[i]['title'] }}</a></strong></td>
+                            
+                          </tr>
+                          <tr>
+                            
+                            <td class="w-50">วัตถุดิบ :
+                                {% for j in results[i]['ingredients'] %}
+                                    {{ j+", " }}
+                                {% endfor %}
+                            </td>
+                            <td class="w-50">
+                                <span><i class="far fa-thumbs-up fa-2x " style="color:blue"> </i></span>  {{ results[i]['like'] }} 
+                                <br>
+                                <br>
+                                <span><i class="fas fa-plus-circle fa-2x " style="color:darkgreen"> </i></span>  {{ results[i]['health'] }}</td>
+                          </tr>
+                          {% endfor %}
+                        </tbody>
+                        {% endif %}
+                      </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

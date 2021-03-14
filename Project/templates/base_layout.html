@@ -7,8 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>Material Design for Bootstrap</title>
-    <!-- CSS file -->
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     <!-- MDB icon -->
     <link rel="icon" href="{{ url_for('static', filename='img/mdb-favicon.ico') }}" type="image/x-icon" />
     <!-- Font Awesome -->
@@ -19,11 +17,23 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/mdb.min.css') }}" />
     <!-- MDB -->
     <script type="text/javascript" src="{{ url_for('static', filename='js/mdb.min.js') }}"></script>
-    <link rel="preconnect" href="https://fonts.gstatic.com/%22%3E" />
+    <link rel="preconnect" href="https://fonts.gstatic.com/" />
     <link href="https://fonts.googleapis.com/css2?family=ABeeZee&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.gstatic.com/%22%3E" />
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    
   </head>
+
+  <style>
+  .nav1,
+  .pre,
+  .main {
+    font-family: 'Dancing Script', cursive;
+  }
+  p,h5,a{
+    font-family: 'ABeeZee', sans-serif;
+  }
+  </style>
 
   <body>
     {% include 'includes/navbar.html' %}

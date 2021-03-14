@@ -1,6 +1,4 @@
 from flask import Blueprint, render_template, request
-from urllib.parse import quote
-from urllib.request import urlopen
 import json
 import requests
 
@@ -26,11 +24,13 @@ def index():
     for i in range(0, 4):
         thai_menu.append(
             {"title":response_thai['results'][i]['title'],
-            "image":"https://spoonacular.com/recipeImages/{0}-240x150.jpg".format(response_thai['results'][i]['id'])
+            "image":"https://spoonacular.com/recipeImages/{0}-240x150.jpg".format(response_thai['results'][i]['id']),
+            "id":response_thai['results'][i]['id']
             })
         drink.append(
             {"title":response_drink['results'][i]['title'],
-            "image":"https://spoonacular.com/recipeImages/{0}-240x150.jpg".format(response_drink['results'][i]['id'])
+            "image":"https://spoonacular.com/recipeImages/{0}-240x150.jpg".format(response_drink['results'][i]['id']),
+            "id":response_drink['results'][i]['id']
             })
 
     return render_template("home.html", thai_menu=thai_menu, drink=drink, margins=["150px", "100px", "50px", "30px"])

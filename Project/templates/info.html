@@ -1,0 +1,70 @@
+{% extends 'base_layout.html' %}
+
+{% block body %}
+    
+  <div class="bg-image" style="background-image: url('{{ url_for('static', filename="img/test.jpg") }}');
+         height: 400vh">
+
+    <div class="mask" style="background-color: rgba(0, 0, 0, 0.6)">
+
+      <div class="d-flex justify-content-center  h-100">
+
+        <div class="row text-center">
+         <div class="container" style="margin-top:150px; margin-bottom:50px; background-color: white; padding: 25px;">
+            <h1>{{ infomation['title'] }}</h1>
+            <img
+            src="{{ infomation['image'] }}"
+            class="img-fluid hover-shadow"
+            alt=""
+            style="width: 30rem;" />
+            <div style="margin-top: 20px; ">
+                <div class="row">
+                <div class="col-3">
+                    <i class="fas fa-dollar-sign fa-2x text-success"></i>
+                    <p class="center" itemprop="Cost">{{ infomation['price'] }} baht</p>
+                </div>
+                <div class="col-3">
+                    <i class="fab fa-gratipay fa-2x text-danger"></i>
+                    <p class="center" itemprop="Like">{{ infomation['like'] }} like</p>
+                </div>
+                <div class="col-3">
+                    <i class="fas fa-clock fa-2x text-secondary"></i>
+                    <p class="center" itemprop="Time">{{ infomation['time'] }} minute</p>
+                </div>
+                <div class="col-3">
+                    <i class="fas fa-poll fa-2x text-warning"></i>
+                    <p class="center" itemprop="Score">{{ infomation['score'] }}%</p>
+                </div>
+                </div>
+               </div>
+            
+            <div class="container" style="margin-top:25px; background-color: #FFFDE7; padding: 25px;">
+                <h3><i class="fas fa-paragraph"></i> Detail</h3>
+                <p class="text-start">{{ infomation['detail'] | safe }}</p>
+            </div>
+
+            <div class="container mt-3 mb-3">
+              <div class="row">
+                <div class="col-6">
+                  <h4 class="text-center"><i class="fas fa-shopping-basket text-info"></i> Ingredients</h4>
+                  {{ ingredients | safe }}
+                </div>
+                 <div class="col-6">
+                  <h4 class="text-center"><i class="fas fa-utensils text-success"></i> Equipments</h4>
+                  {{ equipments | safe }}
+                </div>
+              </div>
+            </div>
+            <div class="container" style="margin-top:25px; background-color: #E8F5E9; padding: 25px;">
+                <h3>How to cook <i class="fas fa-question"></i></h3>
+                  {% for step in infomation['steps'] %}
+                    <p class="text-start"><i class="fas fa-concierge-bell"></i> {{ step }}</p>
+                  {% endfor %}
+            </div>
+         </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+{% endblock %}
