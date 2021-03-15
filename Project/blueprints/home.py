@@ -4,7 +4,7 @@ import requests
 
 home = Blueprint('home', __name__)
 
-URL_THAI_AND_DRINK = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search"
+URL_THAI_AND_DRINK = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch"
 URL_IMG = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/images/classify"
 
 queryThai = {"cuisine":"Thai", "number":"4"}

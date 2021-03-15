@@ -8,7 +8,7 @@
             <br>
             <br>
             <br>
-            <div class="row ">
+            <div class="row">
                 <div class="text-center" style="margin-top: 20px;">
                     <p style="font-size: 75px; color:white" class="main">Search</p>
                 </div>
@@ -107,6 +107,9 @@
                           </tr>
                           {% endfor %}
                         </tbody>
+                        {% endif %}
+                        {% if results == -2 %}
+                          <p class="text-danger">** Sorry we can't find your menu **</p>
                         {% endif %}
                       </table>
                 </div>

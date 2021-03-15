@@ -1,0 +1,21 @@
+{% extends 'base_layout.html' %}
+
+{% block body %}
+<div class="bg-image" style="background-image: url('{{ url_for('static', filename="img/test.jpg") }}');
+         height: 140vh">
+
+    <div class="mask" style="background-color: rgba(0, 0, 0, 0.6)">
+
+      <div class="d-flex justify-content-center h-100">
+
+        <div class="row text-center">
+         <div class="container-fluid" style="margin-top:150px; margin-bottom:50px; background-color: white; padding: 25px;">
+            <h1>How to cook </h1>
+            <iframe src="https://www.youtube.com/embed/{{ video }}" name="iframe" height="600px" width="1080px" title="Iframe" style="margin-top:20px"></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+{% endblock %}

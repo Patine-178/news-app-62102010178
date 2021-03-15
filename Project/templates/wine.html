@@ -1,0 +1,51 @@
+{% extends 'base_layout.html' %}
+
+{% block body %}
+  <div class="bg-image" style="background-image: url('{{ url_for('static', filename="img/test.jpg") }}');
+    height: 150vh">
+
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6)">
+            <div class="row ">
+                <div class="text-center" style="margin-top: 100px;">
+                    <p style="font-size: 75px; color:white">Wine</p>
+                </div>
+                <div class="container text-center" style="margin-left: 350px;">
+                    <form action="/search_wine" method="POST">
+                        <div class="input-group mt-3">
+                            <div class="form-outline border-bottom" style="width:45%; ">
+                                <input type="text" id="form1" name="wine" class="form-control" style="color:white" />
+                                <label class="form-label text-white" for="form1">Search</label>
+
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width:10%">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
+                    
+                </div>
+                {% if results != -1 %}
+                <div class="container-fluid" style="margin-top:25px; background-color: white; width: 70%;">
+                    <table class="table  mt-2">
+                        
+                        <tbody>
+                          <tr>
+                            <th rowspan="2" style="width:200px; height: 200px;"><img src="{{ results['image'] }}" alt="..." style="width: 16rem;"></th>
+                            <td colspan="2" class="text-center"><h3>{{ results['title'] }}</h3></td>
+                            
+                          </tr>
+                          <tr>
+                            
+                            <td><h5>{{ results['price'] }} $</h5><a class="btn btn-outline-success glow-on-hover" target="_blank" href="{{ results['link'] }}" role="button"><i class="fas fa-shopping-cart fa-lg text-success"></i></a> </td>
+                            <td><h5>{{ results['description'] }}</h5><a class="btn btn-outline-info glow-on-hover" href="#" role="button"><i class="fas fa-info fa-lg text-info"></i></a> </td>
+                          </tr>
+                          
+                        </tbody>
+                      </table>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

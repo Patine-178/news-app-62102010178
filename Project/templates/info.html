@@ -3,11 +3,11 @@
 {% block body %}
     
   <div class="bg-image" style="background-image: url('{{ url_for('static', filename="img/test.jpg") }}');
-         height: 400vh">
+         height: 420vh">
 
     <div class="mask" style="background-color: rgba(0, 0, 0, 0.6)">
 
-      <div class="d-flex justify-content-center  h-100">
+      <div class="d-flex justify-content-center">
 
         <div class="row text-center">
          <div class="container" style="margin-top:150px; margin-bottom:50px; background-color: white; padding: 25px;">
@@ -61,6 +61,11 @@
                     <p class="text-start"><i class="fas fa-concierge-bell"></i> {{ step }}</p>
                   {% endfor %}
             </div>
+            <div class="container text-start mt-5">
+                <h4 class="text-center"><i class="fas fa-utensils text-success"></i> Nutrition</h4>
+                  {{ nutrition | safe }}
+            </div>
+            <a class="btn btn-outline-danger custom" href="/video/{{ infomation['title'] }}" role="button"><span > <i class="fab fa-youtube text-danger"></i></span></a>
          </div>
         </div>
       </div>

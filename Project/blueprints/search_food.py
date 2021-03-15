@@ -9,6 +9,7 @@ url_ingre = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes
 url_info = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/{0}/information"
 url_equipment = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/{0}/equipmentWidget"
 url_instruction = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/{0}/analyzedInstructions"
+url_nutrition = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/{0}/nutritionWidget"
 
 queryInstructions = {"stepBreakdown":"true"}
 queryVisual = {"defaultCss":"true", "showBacklink":"false"}
@@ -36,6 +37,16 @@ def search_page():
             results = get_menu({"query": request.form.get('name'), "fillIngredients":"true", "addRecipeInformation":"true"})
         elif not request.form.get('name') and not request.form.get('country'):
             results = get_menu({"type": request.form.get('type'), "fillIngredients":"true", "addRecipeInformation":"true"})
+        elif not request.form.get('country'):
+            results = get_menu({"type": request.form.get('type'), "query":request.form.get('name'), "fillIngredients":"true", "addRecipeInformation":"true"})
+        elif not request.form.get('type'):
+            results = get_menu({"cuisine": request.form.get('country'), "query":request.form.get('name'), "fillIngredients":"true", "addRecipeInformation":"true"})
+        elif not request.form.get('name'):
+            results = get_menu({"cuisine": request.form.get('country'), "type":request.form.get('type'), "fillIngredients":"true", "addRecipeInformation":"true"})
+        else:
+            results = get_menu({"cuisine": request.form.get('country'), "type":request.form.get('type'), "query":request.form.get('name'), "fillIngredients":"true", "addRecipeInformation":"true"})
+        if results == -1:
+            return render_template("search.html", results=-2, total=0)
         return render_template("search.html", results=results[1], total=results[0], height=str(100*results[0]/2))
 
 @search.route('/search/<id>')
@@ -43,7 +54,8 @@ def info(id):
     infomation = get_info(id)
     ingredients = get_ingredients(id)
     equipments = get_equipment(id)
-    return render_template("info.html", infomation=infomation, ingredients=ingredients, equipments=equipments)
+    nutrition = get_nutrition(id)
+    return render_template("info.html", infomation=infomation, ingredients=ingredients, equipments=equipments, nutrition=nutrition)
 
 def get_menu(query):
     response_name = requests.request("GET", url, headers=headers, params=query).json()
@@ -51,8 +63,11 @@ def get_menu(query):
     menu = []
     for i in range(0, total):
         ingredient = []
-        for j in range(0, len(response_name['results'][i]['missedIngredients'])):
-            ingredient.append(response_name['results'][i]['missedIngredients'][j]['name'])
+        try:
+            for j in range(0, len(response_name['results'][i]['missedIngredients'])):
+                ingredient.append(response_name['results'][i]['missedIngredients'][j]['name'])
+        except:
+            return -1
         menu.append(
             {
                 "title":response_name['results'][i]['title'],
@@ -94,4 +109,9 @@ def get_ingredients(id):
 def get_equipment(id):
     url_equip_format = url_equipment.format(id)
     response = requests.request("GET", url_equip_format, headers=visual, params=queryVisual).text
+    return response
+
+def get_nutrition(id):
+    url_nutrition_format = url_nutrition.format(id)
+    response = requests.request("GET", url_nutrition_format, headers=visual, params=queryVisual).text
     return response
