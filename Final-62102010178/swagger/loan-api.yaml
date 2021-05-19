@@ -1,0 +1,152 @@
+openapi: 3.0.0
+info:
+  title: Loan API
+  version: 1.0.0
+
+paths:
+
+  /loan:
+    get:
+      parameters: 
+        - in: query
+          name: loanName
+          description: Loan name
+          required: false
+          schema:
+            type: string
+            example: "Car4Cash"
+        - in: query
+          name: bankName
+          description: Bank name
+          required: false
+          schema:
+            type: string
+            example: "TMB"
+      responses:
+        '200':
+          description: This is a list of loan
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    loan_name:
+                      type: string
+                      example: "Cash Your Home"
+                    type:
+                      type: string
+                      example: "home-loan"
+                    bank_name:
+                      type: string
+                      example: "TMB"
+                    max_loan_amout:
+                      type: integer
+                      example: 3000000
+                    interest_rate:
+                      type: number
+                      example: 5.4
+                    minimum_income:
+                      type: integer
+                      example: 15000
+                    max_loan_term:
+                        type: integer
+                        example: 15
+        '500':
+          $ref: '#/components/responses/500ApiSearchError'
+  /loan/installment:
+    get:
+      parameters: 
+        - in: query
+          name: rate
+          description: Interest rate (year)
+          required: True
+          schema:
+            type: integer
+            example: 5
+        - in: query
+          name: year
+          description: Duration of loan (year)
+          required: True
+          schema:
+            type: integer
+            example: 2
+        - in: query
+          name: amount
+          description: Amount to be borrowed
+          required: True
+          schema:
+            type: integer
+            example: 10000
+      responses:
+        '200':
+          description: Calculate installment amount per month
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  installment_amount:
+                    type: number
+                    example: 458.33
+        '500':
+          $ref: '#/components/responses/500ApiInstallmentError'
+  /loan/income:
+    get:
+      parameters: 
+        - in: query
+          name: minIncome
+          description: Search loan by minimum income
+          required: True
+          schema:
+            type: integer
+            example: 10000
+      responses:
+        '200':
+          description: Show loan list by minimum income
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    loan_name:
+                      type: string
+                      example: "TBANK Refinance"
+                    bank_name:
+                      type: string
+                      example: "TBANK"
+                    minimum_income:
+                      type: integer
+                      example: 10000
+        '500':
+          $ref: '#/components/responses/500ApiSearchError'
+  
+components:
+  responses:
+    500ApiSearchError:
+      description: This is unexpected 
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              statusCode:
+                type: string
+                example: 500
+              message:
+                type: string
+                example: "Loan not found"
+    500ApiInstallmentError:
+      description: Calculate fail. 
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              statusCode:
+                type: string
+                example: 500
+              message:
+                type: string
+                example: "We can't calculate installment amount because parameters not complete."

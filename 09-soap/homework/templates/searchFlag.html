@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html>
+
+<head> 
+    <title>Celsius To Fahrenheit</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+ 
+<body>
+
+    <div class="jumbotron">
+        <h1 class="text-center">Search country flag</h1>
+        <form action="/" method="POST">
+            <div class="form-group">
+                <label for="country">Country code:</label>
+                <input type="text" class="form-control" placeholder="Enter country code" name="country">
+            </div>
+            <button type="submit" class="btn btn-primary">Search</button>
+        </form>
+        {% if country_image %}
+            <div class="d-flex justify-content-center">
+                <img class="img-responsive text-center mt-3" src="{{ country_image }}">
+            </div>
+        {% endif %}
+    </div>
+
+</body>
+
+</html>

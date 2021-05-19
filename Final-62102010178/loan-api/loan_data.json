@@ -1,0 +1,101 @@
+[
+  {
+    "loan_name": "Cash Your Home",
+    "type": "home-loan",
+    "bank_name": "TMB",
+    "max_loan_amout": 3000000,
+    "interest_rate": 5.4,
+    "minimum_income": 15000,
+    "max_loan_term": 15
+  },
+  {
+    "loan_name": "Cash Your Home",
+    "type": "home-loan",
+    "bank_name": "KBANK",
+    "max_loan_amout": 3000000,
+    "interest_rate": 7.5,
+    "minimum_income": 20000,
+    "max_loan_term": 30
+  },
+  {
+    "loan_name": "Car4Cash",
+    "type": "cash",
+    "bank_name": "TMB",
+    "max_loan_amout": 1500000,
+    "interest_rate": 14,
+    "minimum_income": 15000,
+    "max_loan_term": 60
+  },
+  {
+    "loan_name": "Car4Cash",
+    "type": "cash",
+    "bank_name": "BAY",
+    "max_loan_amout": 1000000,
+    "interest_rate": 5.57,
+    "minimum_income": 15000,
+    "max_loan_term": 84
+  },
+  {
+    "loan_name": "Honme Loan Refinance",
+    "type": "home-loan",
+    "bank_name": "BAY",
+    "max_loan_amout": 1000000,
+    "interest_rate": 0.5,
+    "minimum_income": 0,
+    "max_loan_term": 30
+  },
+  {
+    "loan_name": "My Home My Cash",
+    "type": "home-loan",
+    "bank_name": "SCB",
+    "max_loan_amout": 20000000,
+    "interest_rate": 7.65,
+    "minimum_income": 0,
+    "max_loan_term": 30
+  },
+  {
+    "loan_name": "KK Home Loan Refinance",
+    "type": "home-loan",
+    "bank_name": "KKP",
+    "max_loan_amout": 50000000,
+    "interest_rate": 2.59,
+    "minimum_income": 0,
+    "max_loan_term": 30
+  },
+  {
+    "loan_name": "TBANK Refinance",
+    "type": "home-loan",
+    "bank_name": "TBANK",
+    "max_loan_amout": 2000000,
+    "interest_rate": 2.7,
+    "minimum_income": 10000,
+    "max_loan_term": 30
+  },
+  {
+    "loan_name": "Revolving Loan",
+    "type": "cash",
+    "bank_name": "BAY",
+    "max_loan_amout": 2000000,
+    "interest_rate": 9.99,
+    "minimum_income": 15000,
+    "max_loan_term": 60
+  },
+  {
+    "loan_name": "KBANK Refinance",
+    "type": "home-loan",
+    "bank_name": "KBANK",
+    "max_loan_amout": 4000000,
+    "interest_rate": 5.55,
+    "minimum_income": 20000,
+    "max_loan_term": 30
+  },
+  {
+    "loan_name": "Xpress Loan",
+    "type": "cash",
+    "bank_name": "KBANK",
+    "max_loan_amout": 1500000,
+    "interest_rate": 15,
+    "minimum_income": 7500,
+    "max_loan_term": 60
+  }
+]
